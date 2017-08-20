@@ -2,6 +2,31 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Describe the effect each of the P, I, D components had in your implementation.
+Propotional component as the name implies has a direct effect of steering the car towards the CTE line, similarly nagative value make the car steer away from the center.
+Differential component has the effect of making the drive smooth by canceling out the noise in terms of undershoot and overshoot.
+Keeping propotional and differential components fixed, the Integral component seems to control an offset in the drive trajectory.
+
+## Describe how the final hyperparameters were chosen.
+Used trial and error along with twiddle to arrive at the following:
+
+[steer]          ;
+kp		= -0.135  ; 
+ki		= -0.0002;
+kd		= -3.4   ;
+ul		= 1.0    ;
+ll		= -1.0   ;
+
+[speed]          ;
+kp		= 0.35   ;
+ki		= 0.0    ;
+kd		= 0.02    ;
+ll		= 1.0    ;
+ul		= 100.0  ;
+target	= 50.0   ;
+
+Note Integral component for speed is 0, as a negative or positive value here would increase or decrease the velocity, according to the difference between the current and target speed. 
+Eventually usign the above parameters car is able to drive around the track at 50 mph.
 
 ## Dependencies
 
